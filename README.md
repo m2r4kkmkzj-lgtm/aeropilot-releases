@@ -4,28 +4,45 @@ Windows installers, signed update feeds and release notes for AeroPilot Flight D
 
 ## Download
 
-[AeroPilot 0.3.3 preview](https://github.com/m2r4kkmkzj-lgtm/aeropilot-releases/releases/tag/v0.3.3)
+[AeroPilot 0.3.6 preview](https://github.com/m2r4kkmkzj-lgtm/aeropilot-releases/releases/tag/v0.3.6)
 
-Open **Assets** and download `AeroPilot-0.3.3-Setup.exe`. Close AeroPilot while safely parked before installing. Setup installs for your Windows account and creates an **AeroPilot** desktop shortcut.
+Download the installer from the link in the release description (it is not attached under Assets):
+[AeroPilot-0.3.6-Setup.exe](https://raw.githubusercontent.com/m2r4kkmkzj-lgtm/aeropilot-releases/v0.3.6/installers/AeroPilot-0.3.6-Setup.exe)
 
-Use that shortcut to launch: it checks the signed preview channel before starting the app. Verified newer releases install into a new version folder, preserving the previous version. A running controller is not replaced. Directly opening a version-folder AeroPilot.exe bypasses checking. Network availability and GitHub caching can delay update discovery.
+- Size 1,179,136 bytes
+- SHA256 `29e1e78c06366c69b8acbe09b65ae61895d448d0e181a5261a1f09f29be0fe7f`
 
-Installer SHA256: `691310f700263ebb4b2917fd273939f6688cf4023409972cb4740b9a48e70014`.
+Close AeroPilot while safely parked before installing. Setup installs for your Windows account and creates an **AeroPilot** desktop shortcut.
+
+Launch with that shortcut. It checks the signed preview channel before starting the app. Verified newer releases install into a new version folder and the previous version is kept. A running controller is never replaced. Opening a version folder's AeroPilot.exe directly skips the update check. Network availability and GitHub caching can delay update discovery.
+
+Earlier preview installations can update to 0.3.6 through the signed preview channel on the next shortcut launch.
 
 ## What is included
 
-- AeroPilot Design 8.2 interface and own version display.
-- Existing Aerotto 96 controller/account/services and attribution retained.
-- Per-user setup, desktop shortcut and Windows installed-app entry.
+- The AeroPilot Design 8.2 interface with its own version display (v0.3.6), and cleaner wording in the app and map.
+- The existing flight controller, account and connected services. Their attribution and data-sharing disclosures are kept in **Settings → Sharing, connected services & third-party notices**.
+- Per-user setup, a desktop shortcut and a Windows installed-app entry.
 - RSA-signed HTTPS launch-time updates, version backups and command-line rollback.
-- Uninstall registration; flight logs, profiles and version backups are retained for recovery.
+- Uninstall registration. Flight logs, profiles and version backups are kept for recovery.
 
-Default installation: `%LOCALAPPDATA%\AeroPilot`. Errors during update checks are written to `update.log` there. The launcher supports `--rollback`, `--resume-updates` and `--uninstall` while AeroPilot is closed. Rollback pauses updates to prevent immediately restoring the rejected release.
+Default installation: `%LOCALAPPDATA%\AeroPilot`. Errors during update checks are written to `update.log` there. While AeroPilot is closed, the launcher supports `--rollback`, `--resume-updates` and `--uninstall`. Rollback pauses updates so the rejected release isn't immediately restored.
 
 ## Qualification
 
-Native setup, shortcut launch, installed version display, 68 package hashes and Windows Programs and Features entry were verified on the development Windows PC. Public GitHub signed update download/activation was tested; 76 automated checks pass. This is a preview: second clean-PC/dependency acceptance and Windows Authenticode signing are not completed. No universal aircraft, flight-dynamics or gate-to-gate guarantee is made. This installer does not introduce a new flight-control fix or include the separate Fix9 engineering candidate.
+0.3.6 includes A350 Fix9 native altitude-capture acceptance, Fix10 geometric hairpin look-ahead, Fix11 slower hairpins and Fix12 straight-pushback heading hold. Fix12 has one documented gate-to-gate simulator flight (LEBB to LEMD, 16 November 2026). Stand alignment, route-start geometry and straight taxi overspeed remain under investigation. The newer version-98/Fix13 candidate is not included.
 
-The hosted flight-tracking website is a separate service. This repository does not contain personal telemetry, account credentials, private signing keys or the development source tree.
+80 automated tests pass. All 68 source-package hashes and the public signed preview feed/download signature, size and SHA256 were verified. Claude recorded an isolated scratch installation with 68 matching hashes. Native installation/UI checks from 0.3.4 are historical; no new 0.3.6 native installation was performed during publication.
 
-The signed preview feed is `channels/preview.json`. Public verification key is attached to v0.3.2; the installed app pins that key and accepts only verified same-channel upgrades. Releases are immutable; the channel feed advances only after the corresponding installer has been published.
+This is a preview. Second clean-PC/dependency acceptance, Authenticode signing and representative multi-aircraft flight qualification remain incomplete. No universal aircraft or gate-to-gate guarantee is made.
+
+The hosted flight-tracking website is a separate service. This repository contains no personal telemetry, account credentials, private signing keys or development source.
+
+The signed preview feed is `channels/preview.json`. The public verification key is attached to v0.3.2. The installed app pins that key and accepts only verified same-channel upgrades. Releases are immutable; the channel feed advances only after the matching installer has been published.
+
+<details>
+<summary>Data sources &amp; third-party notices</summary>
+
+AeroPilot Flight Deck is built on the existing Aerotto 96 controller. The Aerotto account, its connected services (live map, flight logs, jobs and network features) and their attribution are retained unchanged. Optional flight-log sharing sends the controller's log of each flight to aerotto.com when enabled in Settings. Your callsign, aircraft, position and route can appear on the Aerotto live map; hide your flight in your Aerotto account settings. Map imagery and labels in the separate tracking website come from their providers (Esri, Maxar, Earthstar Geographics and the GIS User Community; © OpenStreetMap contributors), as credited on the map.
+
+</details>
