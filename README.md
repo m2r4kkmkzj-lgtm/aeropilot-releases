@@ -4,23 +4,23 @@ Windows installers, signed update feeds and release notes for AeroPilot Flight D
 
 ## Download
 
-[AeroPilot 0.4.2 preview](https://github.com/m2r4kkmkzj-lgtm/aeropilot-releases/releases/tag/v0.4.2)
+[AeroPilot 0.4.3 preview](https://github.com/m2r4kkmkzj-lgtm/aeropilot-releases/releases/tag/v0.4.3)
 
 Download the installer from the link in the release description (it is not attached under Assets):
-[AeroPilot-0.4.2-Setup.exe](https://raw.githubusercontent.com/m2r4kkmkzj-lgtm/aeropilot-releases/a0367fb4631f3204a5aa29d94523e0aaf11a9b5c/installers/AeroPilot-0.4.2-Verified-Setup.exe)
+[AeroPilot-0.4.3-Setup.exe](https://raw.githubusercontent.com/m2r4kkmkzj-lgtm/aeropilot-releases/v0.4.3/installers/AeroPilot-0.4.3-Setup.exe)
 
-- Size 1,302,528 bytes
-- SHA256 `bbcc4c33062aa8b9b52e6b29f069660e6e607615da5037c2459cc8b7e74507e4`
+- Size 1,307,648 bytes
+- SHA256 `1c433b5329b06cc4ebca16eff6176ed19bedb4f64f5a4d523277d60d768ccf0e`
 
 Close AeroPilot while safely parked before installing. Setup installs for your Windows account and creates an **AeroPilot** desktop shortcut.
 
 Launch with that shortcut. It checks the signed preview channel before starting the app. Verified newer releases install into a new version folder and the previous version is kept. A running controller is never replaced. Opening a version folder's AeroPilot.exe directly skips the update check. Network availability and GitHub caching can delay update discovery.
 
-Earlier preview installations can update to 0.4.2 through the signed preview channel on the next shortcut launch.
+Earlier preview installations can update to 0.4.3 through the signed preview channel on the next shortcut launch.
 
 ## What is included
 
-- The AeroPilot Lime Glass interface with its own version display (v0.4.2), and cleaner wording in the app and map.
+- The AeroPilot Lime Glass interface with its own version display (v0.4.3), and cleaner wording in the app and map.
 - The existing flight controller, account and connected services. Their attribution and data-sharing disclosures are kept in **Settings → Sharing, connected services & third-party notices**.
 - Per-user setup, a desktop shortcut and a Windows installed-app entry.
 - RSA-signed HTTPS launch-time updates, version backups and command-line rollback.
@@ -30,13 +30,11 @@ Default installation: `%LOCALAPPDATA%\AeroPilot`. Errors during update checks ar
 
 ## Qualification
 
-0.4.2 contains the Lime Glass interface, destination hero, callsign greeting and Flight Core 1.0 presentation (based on the existing engine98; attribution retained). Fix19 adjusts A350 flare pitch, sharp stand-corner lead and terminal-zone acceleration handling. Map names/borders, desktop logo and Vision Jet profile are retained. It supersedes unpublished0.4.1.
+0.4.3 adds an FBW A380X-only speed/V/S/lights batch. It routes native-AP enroute thrust through the existing speed controller rather than fixed climb thrust, limits the requested IAS by the existing profile Mach ceiling, and stabilizes nominal climb V/S while retaining underspeed reduction and bounded simulator-time slew. Light InputEvents are mapped from inspected FBW/Asobo templates. Earlier brake release, steering and boxed takeoff fixes are retained. A350 helper/profile bytes remain unchanged from the preceding experimental A380 package; A350 Fix19 remains unflown.
 
-Fix18 completed an A350-900 LEMD-to-LEBB gate-to-gate flight on17November with flare float, stand-corner cut and gate overspeed recorded. Fix19 addresses those findings but is offline-only, NOT flown. Published at user request without a test flight; no A350 Final promotion or all-aircraft qualification.
+Earlier A380 flight verified brake release, takeoff thrust and AP1 but showed302kt at8993ft against250kt target. The new batch is OFFLINE-TESTED ONLY: no flight or physical light response is qualified. No A350 Final promotion or all-aircraft acceptance.
 
-93/93 automated checks PASS during publication,72source manifest hashes verified, Claude recorded local installation PASS. Public HTTPS feed RSA signature, download size and SHA256 verified. No simulator commands or main installation changes during publication. Some historical helper harnesses retain documented pre-existing failures. Second clean-PC/dependency and Authenticode qualification remain incomplete.
-
-Download correction: use the verified installer link above. Initial tag upload failed checksum verification; it was not distributed through the signed updater. Tag history remains preserved; correct bytes are linked by immutable commit.
+93/93 app checks PASS; JIT2087 existing package methods plus6newpolicy methods PASS; original/extended SmokeA380 execution PASS;17/17newpolicy checks PASS;23runnable A350 regression suites PASS. Two pre-existing crashing harnesses and the stale StandTurn harness are not counted as passes. Local reinstall verified all74payload hashes; previous experimental build archived with0.4.2rollback retained. Published HTTPS signature/hash/size verified. Second clean-PC/Authenticode and actual flight stability remain incomplete.
 
 The hosted flight-tracking website is a separate service. This repository contains no personal telemetry, account credentials, private signing keys or development source.
 
